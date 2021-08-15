@@ -17,10 +17,10 @@ const delToDo = (id) => {
   };
 };
 
-const reducer = (state = ["안녕"], action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
-      const addState = [{ text: action.text, id: Date.now() }];
+      const addState = [{ text: action.text, id: Date.now() }, ...state];
       return addState;
     case DELETE:
       const delState = state.filter((todos) => todos.id !== action.id);
@@ -30,6 +30,13 @@ const reducer = (state = ["안녕"], action) => {
   }
 };
 
-const toDoStore = createStore(reducer);
+const store = createStore(reducer);
 
-export default toDoStore;
+store.subscribe(() => console.log(store.getState()));
+
+export const actionCreators = {
+  addToDo,
+  delToDo,
+};
+
+export default store;

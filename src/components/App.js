@@ -1,8 +1,8 @@
 import React from "react";
-import Router from "./Router";
+import ReduxRouter from "./Router";
 
 function App() {
-  return <Router />;
+  return <ReduxRouter />;
 }
 
 export default App;
